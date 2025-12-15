@@ -2,53 +2,49 @@ import { Camera, Mesh, Plane, Program, Renderer, Texture, Transform } from 'ogl'
 import { useEffect, useRef } from 'react';
 const defaultItems = [
   {
-    image: `https://picsum.photos/seed/1/800/600?grayscale`,
-    text: "Bridge",
+    image: `/assets/sports/shortput/shortput_1.jpg`,
+    text: "Shortput",
   },
   {
-    image: `https://picsum.photos/seed/2/800/600?grayscale`,
-    text: "Desk Setup",
+    image: `/assets/volleyball/volleyball_1.jpg`,
+    text: "Tug of War",
   },
   {
-    image: `https://picsum.photos/seed/3/800/600?grayscale`,
-    text: "Waterfall",
+    image: `/assets/sports/Kabaddi/kabbadi_orig.jpeg`,
+    text: "Kabaddi",
   },
   {
-    image: `https://picsum.photos/seed/4/800/600?grayscale`,
-    text: "Strawberries",
+    image: `/assets/sports/handball/handball_orig.jpeg`,
+    text: "Handball",
   },
   {
-    image: `https://picsum.photos/seed/5/800/600?grayscale`,
-    text: "Deep Diving",
+    image: `/assets/sports/football/football_1.jpg`,
+    text: "Football",
   },
   {
-    image: `https://picsum.photos/seed/16/800/600?grayscale`,
-    text: "Train Track",
+    image: `/assets/sports/cricket/cricket_1.jpg`,
+    text: "Cricket",
   },
   {
-    image: `https://picsum.photos/seed/17/800/600?grayscale`,
-    text: "Santorini",
+    image: `/assets/sports/basketball/basketball_1.jpg`,
+    text: "Basketball",
   },
   {
-    image: `https://picsum.photos/seed/8/800/600?grayscale`,
-    text: "Blurry Lights",
+    image: `/assets/sports/volleyball/volleyball_orig.jpeg`,
+    text: "Volleyball",
   },
   {
-    image: `https://picsum.photos/seed/9/800/600?grayscale`,
-    text: "New York",
+    image: `/assets/sports/Kho Kho/kho kho_orig.jpeg`,
+    text: "Kho Kho",
   },
   {
-    image: `https://picsum.photos/seed/10/800/600?grayscale`,
-    text: "Good Boy",
+    image: `/assets/sports/basketball/basketboll_orig.jpeg`,
+    text: "Basketball",
   },
   {
-    image: `https://picsum.photos/seed/21/800/600?grayscale`,
+    image: `General-Championship\public\assets\sports\handball\handball_1.jpg`,
     text: "Coastline",
-  },
-  {
-    image: `https://picsum.photos/seed/12/800/600?grayscale`,
-    text: "Palm Trees",
-  },
+  }
 ];
 type GL = Renderer['gl'];
 
@@ -599,16 +595,30 @@ class App {
     }
   }
 
-  update() {
-    this.scroll.current = lerp(this.scroll.current, this.scroll.target, this.scroll.ease);
-    const direction = this.scroll.current > this.scroll.last ? 'right' : 'left';
+    update() {
+    // 🔥 AUTO SCROLL
+    this.scroll.target += 0.03; // change speed here
+
+    this.scroll.current = lerp(
+      this.scroll.current,
+      this.scroll.target,
+      this.scroll.ease
+    );
+
+    const direction =
+      this.scroll.current > this.scroll.last ? 'right' : 'left';
+
     if (this.medias) {
-      this.medias.forEach(media => media.update(this.scroll, direction));
+      this.medias.forEach(media =>
+        media.update(this.scroll, direction)
+      );
     }
+
     this.renderer.render({ scene: this.scene, camera: this.camera });
     this.scroll.last = this.scroll.current;
     this.raf = window.requestAnimationFrame(this.update.bind(this));
   }
+
 
   addEventListeners() {
     this.boundOnResize = this.onResize.bind(this);
