@@ -17,13 +17,13 @@ export default function BestPlayers() {
   const [selectedMatch, setSelectedMatch] = useState<MatchType | null>(null)
 
   return (
-    <article className="relative min-h-screen bg-gradient-to-tr from-[#fcf0fd] to-[#c7eae6] adjust-top p-3 mx-auto">
+    <article className="relative min-h-screen bg-gradient-to-tr from-[#fcf0fd] to-[#c7eae6]   p-3 mx-auto">
 
       {/*Dynamic Background Image*/}
       {
         game.image && (
           <div
-            className="absolute inset-0 bg-cover bg-center z-0 blur-sm opacity-90"
+            className="absolute inset-0 bg-cover bg-center z-0 blur-2xs opacity-90"
             style={{backgroundImage:`url(${game.image})`}}
           ></div>
         )

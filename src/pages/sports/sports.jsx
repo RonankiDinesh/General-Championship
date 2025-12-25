@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import SportsSection from "../../components/SportsSection";
-import TableComponent from "../../components/table";
+import SportsSection from "./components/SportsSection";
+import TableComponent from "./components/table";
+import TargetCursor from "../../components/cursor/targetcursor";
 import "../../App.css";
 import {
 	Dialog,
@@ -23,14 +24,14 @@ export default function Sports() {
 
 	// --- Click Handlers ---
 
-	const handleSportClick = async (sport) => {
+	const handleSportClick = async (game) => {
 		try {
-			const module = await import(`../../data/${sport.id}.js`);
+			const module = await import(`../../data/${game.title.toLowerCase()}.js`);
 			setSelectedSportData(module.default);
-			setSelectedSportName(sport.name);
+			setSelectedSportName(game.title);
 			setPopupOpen(true);
 		} catch (error) {
-			alert(`Could not find data for ${sport.name}.`);
+			alert(`Could not find data for ${game.title}.`);
 		}
 	};
 
@@ -39,60 +40,60 @@ export default function Sports() {
 	};
 
 	return (
-		<div className='sports-container'>
-			<h1
-				style={{
-					textAlign: "center",
-					fontFamily: "Inter, sans-serif",
-					fontSize: "3rem",
-					fontWeight: "700",
-					color: "#3A1616",
-				}}>
-				SPORTS
-			</h1>
-			<SportsSection handleSportClick={handleSportClick} />
-			<Dialog
-				open={isPopupOpen}
-				onClose={handleClosePopup}
-				fullWidth={true}
-				maxWidth='sm'
-				sx={{ backdropFilter: "blur(2px)", m: 0 }}
-				PaperProps={{
-					sx: (theme) => ({
-						borderRadius: "40px",
-						[theme.breakpoints.down("sm")]: {
-							margin: 0,
-							width: "96%",
-						},
-					}),
-				}}>
-				<IconButton
-					aria-label='close'
-					onClick={handleClosePopup}
-					sx={{
-						position: "absolute",
-						right: 12,
-						top: 12,
-						color: "#946F2C",
-						zIndex: 2,
-					}}>
-					<CloseIcon />
-				</IconButton>
-				<div className='popup-container'>
-					<DialogTitle>{selectedSportName} Table</DialogTitle>
-					<Divider
-						sx={{
-							borderColor: "#946F2C",
-							borderBottomWidth: 2,
-							margin: "0 0 10px 0",
-						}}
-					/>
+		
+		<section >
+			{/** Background */}
+			<div className="relative min-h-screen bg-gradient-to-tr from-[#fcce89] to-[#ffcc92]">
+				<div className="content">
+					<h1 className="text-amber-950 text-center text-4xl pt-4 pl-8 pb-2 font-bold font-[Brave81] tracking-wide">SPORTS</h1>
 
-					<DialogContent>
-						{<TableComponent teams={selectedSportData} />}
-					</DialogContent>
+					{/**Card Component Traversing */}
+					<SportsSection handleSportClick={handleSportClick} />
+					<Dialog
+						open={isPopupOpen}
+						onClose={handleClosePopup}
+						fullWidth={true}
+						maxWidth='sm'
+						sx={{ backdropFilter: "blur(2px)", m: 0 }}
+						PaperProps={{
+							sx: (theme) => ({
+								borderRadius: "40px",
+								[theme.breakpoints.down("sm")]: {
+									margin: 0,
+									width: "96%",
+								},
+							}),
+						}}>
+						<IconButton
+							aria-label='close'
+							onClick={handleClosePopup}
+							sx={{
+								position: "absolute",
+								right: 12,
+								top: 12,
+								color: "#946F2C",
+								zIndex: 2,
+							}}>
+							<CloseIcon />
+						</IconButton>
+						<div className='popup-container' >
+							<DialogTitle ><h1 className=" font-[Brave81]">{selectedSportName} Table</h1></DialogTitle>
+							<Divider
+								sx={{
+									borderColor: "#946F2C",
+									borderBottomWidth: 2,
+									margin: "0 0 10px 0",
+								}}
+							/>
+
+							<DialogContent >
+								{<TableComponent teams={selectedSportData} />}
+							</DialogContent>
+						</div>
+					</Dialog>
 				</div>
-			</Dialog>
-		</div>
+			</div>
+			</section>
+		
 	);
 }

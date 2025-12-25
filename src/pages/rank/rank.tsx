@@ -24,9 +24,18 @@ export default function OverallRank() {
   }
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-tr from-[#fcf0fd] to-[#c7eae6] adjust-top p-3 mx-auto">
+    <div className="relative min-h-screen  bg-gradient-to-tr from-[#fcce89] to-[#ffcc92] ]
+        bg-cover bg-center bg-no-repeat  p-3 mx-auto">
+        
+        {/* 🔹 Blurred Background Image Layer */}
+
+
+        <div className="relative z-10">
+
+
+
       <div className="stats">
-        <h2 className="text-3xl font-bold mb-6 text-center font-[Brave81] text-black mt-5 tracking-widest">
+        <h2 className="text-3xl font-bold mb-6 text-center font-[Brave81] text-amber-950 mt-5 tracking-widest">
           Team Standings
         </h2>
        {/** <div className="table-container overflow-x-auto bg-white shadow-2xl border border-gray-100"> */}
@@ -41,6 +50,7 @@ export default function OverallRank() {
           <RankDetailPopup team={selectedTeam} onClose={handleClosePopup} />
         )}
       </div>
+        </div>
     </div>
   );
 };

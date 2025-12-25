@@ -9,11 +9,13 @@ export default function BestBySports() {
     navigate(`/players/${game.sportId}`, { state: game });
   };
   return (
-    <section className="adjust-top">
+    <section>
       {/** Background */}
-      <div className="relative min-h-screen bg-gradient-to-tr from-[#fcf0fd] to-[#c7eae6]">
+      <div className="relative min-h-screen  bg-gradient-to-tr from-[#fcce89] to-[#ffcc92]">
         <div className="content">
-          <h2 className="text-black text-4xl pt-4 pl-8 pb-1 font-bold font-[Brave81] tracking-wide">Best Players</h2>
+          <h2 className="text-amber-950 text-4xl pt-4 md:pt-6 lg:pt-7 pl-8 pb-1 font-bold font-[Brave81] tracking-wide text-center">
+            Best Players
+          </h2>
 
           {/**Card Component Traversing */}
           <div className="grid gap-6 grid-cols-2 smd:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 p-5">
